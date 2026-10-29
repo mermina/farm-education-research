@@ -1,209 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Farm Education Research</title>
-<meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Master's research on co-designing farm-based and digital learning about food sustainability with farmers and young people in Iceland. A Green Wellbeing project.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap">
 <style>
-/* Layout: one reading column; mind map on top, then idea inventory grouped by strand, each idea a row with a status chip. */
-:root{
-  --bg:#F1F4EE; --surface:#FFFFFF; --fg:#1E2A21; --muted:#5B6A5E; --line:#D5DDD1;
-  --accent:#3F6E34; --decided:#2F6B3A; --open:#9A6A12; --proposed:#3F5E8C; --todo:#8A3F5A;
-  --chip-bg:#E6ECE2;
-  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
-}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#141A16; --surface:#1C241F; --fg:#E4EBE3; --muted:#9DAC9F; --line:#2E3A31;
-  --accent:#8CC27A; --decided:#86C98F; --open:#E0B25A; --proposed:#8FB0E3; --todo:#E39AB6; --chip-bg:#26302A; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#141A16; --surface:#1C241F; --fg:#E4EBE3; --muted:#9DAC9F; --line:#2E3A31;
-  --accent:#8CC27A; --decided:#86C98F; --open:#E0B25A; --proposed:#8FB0E3; --todo:#E39AB6; --chip-bg:#26302A; color-scheme:dark}
-body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55;
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 64px}
-.wrap{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
-h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15}
-h1{font-size:clamp(2rem,5vw,2.8rem);font-weight:700}
-h2{font-size:1.45rem;font-weight:700;display:flex;gap:10px;align-items:baseline}
-h2 .n{color:var(--accent);font-size:1rem}
-.lede{color:var(--muted);max-width:65ch;margin:10px 0 0}
-.meta{font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);font-weight:700}
-.map{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;overflow-x:auto}
-.map pre{margin:0;min-width:760px}
-.legend{display:flex;flex-wrap:wrap;gap:8px;font-size:.85rem;color:var(--muted)}
-section{display:flex;flex-direction:column;gap:12px}
-ul.ideas{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
-ul.ideas li{display:grid;grid-template-columns:2.2rem 1fr auto;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);align-items:start}
-ul.ideas li>div{min-width:0}
-.id{font-variant-numeric:tabular-nums;color:var(--muted);font-size:.85rem;padding-top:2px}
-.t{font-weight:700}
-.d{color:var(--muted);font-size:.93rem}
-.chip{font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:99px;background:var(--chip-bg);white-space:nowrap;border:1px solid currentColor}
-.c-decided{color:var(--decided)} .c-open{color:var(--open)} .c-proposed{color:var(--proposed)} .c-todo{color:var(--todo)}
-.note{font-size:.88rem;color:var(--muted);max-width:65ch}
-.c-parked{color:var(--muted)}
-nav.jump{display:flex;flex-wrap:wrap;gap:8px}
-nav.jump a{font-family:var(--display);font-weight:700;color:var(--fg);text-decoration:none;padding:8px 14px;border:1px solid var(--line);border-radius:99px;background:var(--surface)}
-nav.jump a:hover,nav.jump a:focus-visible{border-color:var(--accent);color:var(--accent);outline:none}
-.part{font-family:var(--display);font-size:1.9rem;font-weight:700;padding-top:8px;border-top:3px solid var(--accent)}
-.prose{max-width:65ch;display:flex;flex-direction:column;gap:10px}
-.prose p{margin:0}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0}
-.card h3{font-size:1.05rem}
-.card .who{font-size:.8rem;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);font-weight:700}
-.card p{margin:0;color:var(--muted);font-size:.93rem}
-.rq{background:var(--surface);border-left:4px solid var(--proposed);padding:14px 16px;border-radius:0 10px 10px 0}
-.rq p{margin:0}
-.rq ol{margin:8px 0 0;padding-left:20px;color:var(--muted)}
-.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
-table{border-collapse:collapse;width:100%;min-width:620px;font-size:.92rem}
-th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
-th{font-family:var(--display);font-size:.85rem;color:var(--muted)}
-tr:last-child td{border-bottom:none}
-.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line)}
-.steps li{display:grid;grid-template-columns:8.5rem 1fr;gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}
-.steps li>div{min-width:0}
-.steps .when{font-family:var(--display);font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums}
-.steps ul{margin:4px 0 0;padding-left:18px;color:var(--muted)}
-@media (max-width:520px){.steps li{grid-template-columns:1fr;gap:4px}}
-@media (max-width:520px){ul.ideas li{grid-template-columns:1.8rem 1fr}ul.ideas li .chip{grid-column:2;justify-self:start}}
-</style><style>
-.fund{font-family:var(--display);font-weight:700;color:var(--accent);white-space:nowrap}
-.who2{font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700}
-.decision{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--open);border-radius:0 10px 10px 0;padding:14px 16px}
-.decision p{margin:0}
-.decision ul{margin:6px 0 0;padding-left:18px;color:var(--muted)}
-</style><style>
-.mm{display:flex;flex-direction:column;gap:14px;align-items:stretch}
-.mm-root{align-self:center;font-family:var(--display);font-weight:700;font-size:1.3rem;background:var(--accent);color:var(--bg);padding:10px 22px;border-radius:99px}
-.mm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
-.mm-b{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;min-width:0}
-.mm-h{font-family:var(--display);font-weight:700;color:var(--accent);margin-bottom:4px}
-.mm-b ul{margin:0;padding-left:18px;color:var(--muted);font-size:.92rem}
-.tabs{display:flex;gap:6px;border-bottom:2px solid var(--line);flex-wrap:wrap}
-.tabs a{font-family:var(--display);font-weight:700;text-decoration:none;color:var(--muted);padding:10px 16px;border-bottom:3px solid transparent;margin-bottom:-2px}
-.tabs a[aria-current="page"]{color:var(--accent);border-bottom-color:var(--accent)}
-.tabs a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.view{display:flex;flex-direction:column;gap:40px}
-.subnav{display:flex;gap:8px;flex-wrap:wrap}
-.subnav a{color:var(--accent);font-weight:700}
-</style><style>
-/* Layout: sticky brand menu bar (Green Wellbeing green) + one content column; each menu item is a view. Brand from greenwellbeing.org: Raleway, deep green, warm orange. */
 :root{
   --bg:#F5F7F3; --surface:#FFFFFF; --fg:#141A17; --muted:#56655C; --line:#D9E1DA;
   --accent:#1F5A45; --brand:#12352A; --brand-fg:#FFFFFF; --cta:#E25827;
   --decided:#1F6B45; --open:#9A5B0E; --proposed:#3A5C8F; --todo:#B4431C; --chip-bg:#EEF2ED;
-  --display:"Raleway", "Segoe UI", system-ui, sans-serif; --body:"Raleway", "Segoe UI", system-ui, sans-serif;
+  --font:"Raleway","Segoe UI",system-ui,sans-serif;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+@media (prefers-color-scheme: dark){:root{
   --bg:#0E1714; --surface:#16231E; --fg:#E6ECE8; --muted:#9DB0A5; --line:#29392F;
   --accent:#7FC8A2; --brand:#0B2A20; --brand-fg:#E6ECE8; --cta:#F07A4E;
   --decided:#86CFA0; --open:#E6B25E; --proposed:#93B4E8; --todo:#F29A74; --chip-bg:#1E2D27; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0E1714; --surface:#16231E; --fg:#E6ECE8; --muted:#9DB0A5; --line:#29392F;
-  --accent:#7FC8A2; --brand:#0B2A20; --brand-fg:#E6ECE8; --cta:#F07A4E;
-  --decided:#86CFA0; --open:#E6B25E; --proposed:#93B4E8; --todo:#F29A74; --chip-bg:#1E2D27; color-scheme:dark}
-body{padding:0!important;font-size:16px}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--brand)}
-.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--brand);color:var(--brand-fg);
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:10px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+[id]{scroll-margin-top:calc(var(--hdr,64px) + 28px)}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font);font-size:15px;line-height:1.45}
+img{max-width:100%}
+h1,h2,h3{margin:0;line-height:1.15;text-wrap:balance}
+h2{font-size:1.2rem;font-weight:700;display:flex;gap:10px;align-items:baseline}
+h2 .n{color:var(--accent);font-size:1rem}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:5;background:var(--brand);color:var(--brand-fg);padding:6px max(16px,env(safe-area-inset-right,0px)) 6px max(16px,env(safe-area-inset-left,0px))}
 .topbar-in{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--brand-fg);min-width:0}
-.brand img{width:38px;height:38px;border-radius:50%;background:#fff;object-fit:contain}
+.brand img{width:32px;height:32px;border-radius:50%;background:#fff;object-fit:contain}
 .brand .bn{display:flex;flex-direction:column;line-height:1.1}
-.brand .bn b{font-weight:800;font-size:1rem}
+.brand .bn b{font-weight:800}
 .brand .bn span{font-size:.78rem;opacity:.75;letter-spacing:.04em}
 .menu{display:flex;gap:2px;overflow-x:auto;margin-left:auto;max-width:100%;scrollbar-width:none}
 .menu::-webkit-scrollbar{display:none}
-.menu a{color:var(--brand-fg);opacity:.8;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:8px;white-space:nowrap}
-.menu a:hover{opacity:1;background:rgba(255,255,255,.08)}
-.menu a[aria-current="page"]{opacity:1;background:rgba(255,255,255,.14);box-shadow:inset 0 -3px 0 var(--cta)}
-.menu a:focus-visible{outline:2px solid var(--cta);outline-offset:2px}
-main.site{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 64px}
-.wrap{max-width:1080px}
-.view{display:flex;flex-direction:column;gap:36px}
-.vh{display:flex;flex-direction:column;gap:6px}
-.vh h1{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
-.kpi{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:4px;min-width:0}
-.kpi .lab{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700}
-.kpi .big{font-size:2rem;font-weight:800;font-variant-numeric:tabular-nums;color:var(--accent);line-height:1.1}
-.kpi .sub{font-size:.9rem;color:var(--muted)}
-.kpi.next{border-color:var(--cta);box-shadow:inset 4px 0 0 var(--cta)}
-.kpi.next .big{color:var(--cta)}
-.dl{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
-.dl li{display:grid;grid-template-columns:4.5rem 1fr auto;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);align-items:center}
-.dl li>div{min-width:0}
-.dl .days{font-weight:800;font-variant-numeric:tabular-nums;color:var(--accent);font-size:1.15rem}
-.dl li.past{opacity:.5}
-.dl .when2{color:var(--muted);font-size:.88rem;white-space:nowrap}
-.check{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
-.check label{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;border-radius:8px;cursor:pointer}
-.check label:hover{background:var(--chip-bg)}
-.check input{margin-top:4px;accent-color:var(--accent);width:18px;height:18px;flex:none}
-.check input:checked + span{text-decoration:line-through;color:var(--muted)}
-.bar{height:8px;background:var(--chip-bg);border-radius:99px;overflow:hidden}
-.bar i{display:block;height:100%;background:var(--accent);width:0}
-.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
-.two>*{min-width:0}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:12px}
-.panel h2{font-size:1.15rem}
-.est{font-size:.72rem;color:var(--muted);font-weight:700;letter-spacing:.04em;text-transform:uppercase}
-footer.site{background:var(--brand);color:var(--brand-fg);opacity:.95;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:18px;font-size:.85rem}
-footer.site div{max-width:1080px;margin:0 auto;opacity:.75}
-@media (max-width:520px){.dl li{grid-template-columns:3.6rem 1fr}.dl .when2{grid-column:2}}
-/* compact pass */
-body{font-size:15px;line-height:1.45}
-.steps li{display:block;padding:0;border:0}
+.menu a{color:var(--brand-fg);opacity:.85;text-decoration:none;font-weight:600;padding:6px 10px;border-radius:8px;white-space:nowrap}
+.menu a:hover,.menu a:focus-visible{opacity:1;background:rgba(255,255,255,.12);outline:none}
+main.site{padding:16px max(16px,env(safe-area-inset-right,0px)) 40px max(16px,env(safe-area-inset-left,0px))}
+.wrap{max-width:1080px;margin:0 auto}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:28px;align-items:start}
+.view{display:flex;flex-direction:column;gap:22px;min-width:0}
+.vh{display:flex;flex-direction:column;gap:2px}
+.vh h1{font-size:clamp(1.5rem,3vw,2rem);font-weight:800}
+.meta{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.lede{color:var(--muted);max-width:65ch;margin:4px 0 0}
+section{display:flex;flex-direction:column;gap:8px}
+.prose{max-width:65ch;display:flex;flex-direction:column;gap:6px}
+.prose p{margin:0}
+.note{font-size:.88rem;color:var(--muted);max-width:65ch;margin:0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.card h3{font-size:1.05rem}
+.card .who{font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.card p{margin:0;color:var(--muted);font-size:.93rem}
+.rq{background:var(--surface);border-left:4px solid var(--proposed);padding:10px 14px;border-radius:0 10px 10px 0}
+.rq p{margin:0}
+.rq ol{margin:4px 0 0;padding-left:20px;color:var(--muted)}
+ul.ideas{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+ul.ideas li{display:grid;grid-template-columns:2.2rem 1fr auto;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);align-items:start}
+ul.ideas li>div{min-width:0}
+.id{font-variant-numeric:tabular-nums;color:var(--muted);font-size:.85rem;padding-top:2px}
+.t{font-weight:700}
+.d{color:var(--muted);font-size:.9rem}
+.chip{font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:99px;background:var(--chip-bg);white-space:nowrap;border:1px solid currentColor}
+.c-decided{color:var(--decided)} .c-open{color:var(--open)} .c-proposed{color:var(--proposed)} .c-todo{color:var(--todo)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.92rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.85rem;color:var(--muted)}
+tr:last-child td{border-bottom:none}
+.steps{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
 .steps>li{display:grid;grid-template-columns:8rem 1fr;gap:12px;padding:8px 0;border-bottom:1px solid var(--line)}
-.steps ul{margin:2px 0 0;padding-left:18px}
-.steps ul li{display:list-item;padding:1px 0}
-.wrap{gap:18px}
-.view{gap:22px}
-section{gap:8px}
-main.site{padding-block:16px 40px}
-.vh{gap:2px}
-.vh h1{font-size:clamp(1.5rem,3vw,2rem)}
-.lede{margin-top:4px}
-h2{font-size:1.2rem}
-.part{font-size:1.4rem;padding-top:4px}
-ul.ideas li{padding:7px 0;gap:10px}
-.d{font-size:.9rem}
-th,td{padding:7px 10px}
-.kpis{gap:10px}
-.kpi{padding:10px 12px;gap:2px}
-.kpi .big{font-size:1.6rem}
-.two{gap:14px}
-.panel{padding:12px 14px;gap:8px}
-.card{padding:10px 12px;gap:4px}
-.cards{gap:10px}
-.rq{padding:10px 14px}
-.rq ol{margin-top:4px}
-.decision{padding:10px 14px}
-.prose{gap:6px}
-.mm{gap:10px}
-.mm-grid{gap:8px}
-.mm-b{padding:8px 12px}
-.dl li{padding:7px 0}
-.check label{padding:5px 8px}
-.topbar{padding-block:6px}
-.brand img{width:32px;height:32px}
-.menu a{padding:6px 10px}
-@media (max-width:520px){.steps>li{grid-template-columns:1fr;gap:2px}}
-</style><style>
-.mm-pic{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px}
-.mm-pic svg{display:block;width:100%;min-width:980px;height:auto;margin:0 auto}
-.mm-l1{fill:none;stroke:var(--accent);stroke-width:2.5}
-.mm-l2{fill:none;stroke:var(--line);stroke-width:1.5}
-.mm-leaf{fill:var(--fg);font:500 12.5px var(--body)}
-.mm-bnode{fill:var(--chip-bg);stroke:var(--accent);stroke-width:1.5}
-.mm-btext{fill:var(--accent);font:700 13px var(--display)}
-.mm-root2{fill:var(--accent)}
-.mm-roottext{fill:var(--surface);font:800 16px var(--display)}
-</style><header class="topbar"><div class="topbar-in">
+.steps>li>div{min-width:0}
+.steps .when{font-weight:700;color:var(--accent)}
+.steps ul{margin:2px 0 0;padding-left:18px;color:var(--muted)}
+.side{position:sticky;top:64px;display:flex;flex-direction:column;gap:10px}
+.side-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.side-card .lab{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.side-card p{margin:0;color:var(--muted);font-size:.9rem}
+.side-card a{color:var(--accent);font-weight:600;text-decoration:none}
+.side-card a:hover,.side-card a:focus-visible{text-decoration:underline}
+.side-cta{display:inline-block;background:var(--cta);color:#fff!important;padding:8px 12px;border-radius:8px;text-align:center;margin-top:4px}
+.side-nav{display:flex;flex-direction:column;gap:4px}
+footer.site{background:var(--brand);color:var(--brand-fg);padding:18px max(16px,env(safe-area-inset-right,0px)) 18px max(16px,env(safe-area-inset-left,0px));font-size:.85rem}
+footer.site div{max-width:1080px;margin:0 auto;opacity:.75}
+@media (max-width:900px){.layout{grid-template-columns:1fr}.side{position:static}}
+@media (max-width:520px){.steps>li{grid-template-columns:1fr;gap:2px}ul.ideas li{grid-template-columns:1.8rem 1fr}ul.ideas li .chip{grid-column:2;justify-self:start}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topbar-in">
   <a class="brand" href="#top"><img src="https://greenwellbeing.org/logo-mark.png" alt="Green Wellbeing logo" onerror="this.style.display='none'"><span class="bn"><b>Green Wellbeing</b><span>Farm Education Research</span></span></a>
-  <nav class="menu" aria-label="Sections"><a href="#question">Question</a><a href="#audiences">Audiences</a><a href="#theory">Theory</a><a href="#method">Method</a><a href="#outputs">Outputs</a><a href="#sources">Sources</a></nav>
+  <nav class="menu" aria-label="Sections"><a href="#question">Question</a><a href="#audiences">Audiences</a><a href="#theory">Theory</a><a href="theory.html">Theory chapters ↗</a><a href="#method">Method</a><a href="#fieldwork">Fieldwork</a><a href="#outputs">Outputs</a><a href="#researcher">Researcher</a><a href="#sources">Sources</a></nav>
 </div></header>
-<main class="site" id="top"><div class="wrap"><div class="view">
+<main class="site" id="top"><div class="wrap layout"><div class="view">
 <div class="vh"><div class="meta">Master's research · MA International Education, University of Iceland · 2026–2027</div><h1>Farm Education Research</h1>
 <p class="lede">How can young people learn food sustainability from real farms, on the farm and online? A design-based study co-creating learning materials with farmers and young people in Iceland, run with Green Wellbeing. Research design draft, October 2026.</p></div>
 <section id="question">
@@ -214,7 +106,7 @@ th,td{padding:7px 10px}
     <ol>
       <li><b>Landscape:</b> what farm-based and food-sustainability education exists in Iceland and abroad, formal, non-formal and informal, and where are the gaps, especially for young people who want to enter farming?</li>
       <li><b>The visit:</b> what do young people (both groups) and farmers value in hands-on farm learning, and how should materials be shaped around it?</li>
-      <li><b>Digital:</b> how do the partner farms communicate now, and which co-designed digital formats carry learning beyond the visit while also supporting the farm's sales?</li>
+      <li><b>Digital:</b> how do the partner farms communicate now, and which co-designed digital formats carry learning beyond the visit, and how do farmers see their value for the farm, including for selling their produce?</li>
     </ol>
   </div>
   <p class="note">Built into the interviews, not a separate question: what young people see as barriers to entering farming (land, money, knowledge, not knowing where to start). This feeds a short policy note and future research.</p>
@@ -226,14 +118,15 @@ th,td{padding:7px 10px}
     <div class="card"><span class="who">Audience 2</span><h3>Learning to farm</h3><p>Young people who want the actual practices, including those who might farm professionally.</p></div>
     <div class="card"><span class="who">Secondary</span><h3>Farmers</h3><p>Co-designers of the materials, and learners about communicating what they do.</p></div>
   </div>
-  <div class="rq"><p><b>The “harbour”:</b> young people in Iceland, Poland and Europe don't know where to go and where to start. The long-term output is one place with useful links in the sector and clear paths into food growing and farming, starting where you live: a balcony, a community garden such as Seljagarður, an allotment, then a real farm.</p></div>
+  <div class="rq"><p><b>The “harbour”:</b> young people in Iceland and the Nordic countries don't know where to go and where to start. The long-term output is one place with useful links in the sector and clear paths into food growing and farming, starting where you live: a balcony, a community garden such as Seljagarður, an allotment, then a real farm.</p></div>
 </section>
 <section id="theory">
   <h2><span class="n">R3</span>Theory chapters</h2>
+  <p class="note"><a href="theory.html"><b>Read the full theory chapters with sources →</b></a></p>
   <ul class="ideas">
     <li><span class="id">T1</span><div><div class="t">Sustainability, narrowed to food sustainability</div><div class="d">Food systems, food security, SDG 2 and 12, Iceland's food policy to 2040. Definitions: organic is certification, regenerative is a set of practices with no fixed standard, local is about distance. The project teaches the difference.</div></div><span class="chip c-proposed">Literature</span></li>
     <li><span class="id">T2</span><div><div class="t">Education in all its forms</div><div class="d">Formal (school and upper-secondary curricula; adult and vocational education such as the Agricultural University of Iceland and Garðyrkjuskólinn á Reykjum), non-formal (Erasmus+, NGO projects, Climate Café Iceland), informal (libraries, community gardens, farm visits). Education for sustainability, place-based and experiential learning, youth participation as democratic practice.</div></div><span class="chip c-proposed">Literature</span></li>
-    <li><span class="id">T3</span><div><div class="t">Existing programmes: Iceland first, mainly abroad</div><div class="d">Research what is available first: how they operate, what they offer, who funds them. Start with LEAF Open Farm Sunday, Estonia's Open Farm Day, Poland's educational farms, InclusiGardens, FarmElder, Inn på tunet, care farms, Social Farming Ireland, Farm School NYC, Stone Barns, Glynwood, Matís's Krakkar kokka. Include urban and community gardening programmes (e.g. Seljagarður in Reykjavík).</div></div><span class="chip c-proposed">Literature</span></li>
+    <li><span class="id">T3</span><div><div class="t">Existing programmes: Iceland first, mainly abroad</div><div class="d">Research what is available first: how they operate, what they offer, who funds them. Scope: Iceland first, then the other Nordic countries, with a few wider European examples. Start with Inn på tunet (Norway), Nordic care farms and open-farm days, Matís's Krakkar kokka, LEAF Open Farm Sunday (UK), Estonia's Open Farm Day, InclusiGardens, FarmElder and Social Farming Ireland. Include urban and community gardening programmes (e.g. Seljagarður in Reykjavík).</div></div><span class="chip c-proposed">Literature</span></li>
     <li><span class="id">T4</span><div><div class="t">How farms communicate: social marketing and social business</div><div class="d">Stated openly: if educational content also raises sales, that is the symbiosis we want. Many farmers see communication as wasted money and take part only with a grant; showing that the same content educates and sells makes them willing to invest. Social marketing (Kotler and Zaltman, 1971); small farms as social businesses.</div></div><span class="chip c-proposed">Literature</span></li>
     <li><span class="id">T5</span><div><div class="t">Digital learning formats</div><div class="d">Short video and microlearning, online learning paths, digital youth work; what small farms can keep up with little time.</div></div><span class="chip c-proposed">Literature</span></li>
     <li><span class="id">T6</span><div><div class="t">Barriers to entering farming</div><div class="d">Land access, capital, subsidies, generational renewal in Iceland and Europe. Context, and the basis for the policy note.</div></div><span class="chip c-proposed">Literature</span></li>
@@ -241,36 +134,109 @@ th,td{padding:7px 10px}
 </section>
 <section id="method">
   <h2><span class="n">R4</span>Method: design-based research</h2>
+  <div class="rq"><p><b>How the three options fit together.</b> The study is built on <b>Option A</b> (co-designing farm learning with young people), which gives the method and the main question. <b>Option B</b> (pathways and barriers into farming) becomes sub-question 1, the landscape review, plus a set of interview questions about barriers. <b>Option C</b> (how farms communicate digitally) becomes sub-question 3.</p></div>
+  <div class="tbl"><table>
+    <thead><tr><th>Question</th><th>From</th><th>Data</th><th>Method of analysis</th><th>When</th></tr></thead>
+    <tbody>
+      <tr><td><b>SQ1 Landscape:</b> what farm-based and food-sustainability education exists, and where are the gaps?</td><td>Option B</td><td>Literature; existing programmes in Iceland, the Nordics and Europe; policy documents</td><td>Literature review; document analysis of programmes (who, what, funding, outcomes)</td><td>Nov 2026 – Apr 2027</td></tr>
+      <tr><td><b>SQ2 The visit:</b> what do young people and farmers value in hands-on farm learning?</td><td>Option A</td><td>Co-design workshop outputs; observation notes from farm days; interviews with young people and farmers; before/after questionnaire</td><td>Thematic analysis; descriptive statistics; design principles revised after each round</td><td>May – Sep 2027</td></tr>
+      <tr><td><b>SQ3 Digital:</b> how do farms communicate now, which digital formats extend learning, and how do farmers see their value?</td><td>Options A + C</td><td>Content audit of farm channels; co-designed videos and learning path; video views and learning-path completion; farmer interviews</td><td>Content analysis; descriptive statistics; thematic analysis</td><td>Spring + summer 2027</td></tr>
+      <tr><td><b>Barriers (inside interviews):</b> what stops young people from going into farming?</td><td>Option B</td><td>Interview questions with young people and farmers</td><td>Thematic analysis, reported as a short policy note</td><td>Aug – Sep 2027</td></tr>
+    </tbody>
+  </table></div>
   <div class="tbl"><table>
     <thead><tr><th>Phase</th><th>When</th><th>What</th></tr></thead>
     <tbody>
       <tr><td><b>0 Landscape</b></td><td>Nov 2026 – Apr 2027</td><td>Literature T1–T6; review of existing programmes</td></tr>
-      <tr><td><b>1 Baseline</b></td><td>Spring 2027</td><td>How the partner farms communicate now; sales numbers if they agree to share</td></tr>
+      <tr><td><b>1 Baseline</b></td><td>Spring 2027</td><td>How the partner farms communicate now</td></tr>
       <tr><td><b>2 Co-design</b></td><td>May – June 2027</td><td>Workshops with farmers and young people</td></tr>
       <tr><td><b>3 Test</b></td><td>June – Aug 2027</td><td>Farm visits plus 2–3 digital formats</td></tr>
-      <tr><td><b>4 Evaluate</b></td><td>Aug – Sep 2027</td><td>Interviews, short survey, digital engagement before and after</td></tr>
+      <tr><td><b>4 Evaluate</b></td><td>Aug – Sep 2027</td><td>Interviews, short questionnaire, digital engagement</td></tr>
     </tbody>
   </table></div>
-  <p class="note">One summer shows whether the approach is promising, not long-term proof. Interviews and surveys follow University of Iceland ethics approval.</p>
+  <p class="note">No sales figures are collected: the link between education and sales is explored through the literature and through what farmers say in interviews. One summer shows whether the approach is promising, not long-term proof. Interviews and surveys follow University of Iceland ethics approval.</p>
 </section>
+<section id="fieldwork">
+  <h2><span class="n">R4b</span>The practical research, step by step</h2>
+  <div class="prose"><p>Where it happens: two partner farms (South and North-East Iceland, to be confirmed), a community growing plot near Reykjavík used as an open “playground” for trying things out, and a Reykjavík community garden for workshops.</p></div>
+  <div class="cards">
+    <div class="card"><span class="who">Who takes part</span><h3>Young people</h3><p>About 15–25 people aged 16–30, in two groups: those curious about food sustainability, and those who want to grow or farm. Recruited through youth centres, upper-secondary schools, universities and Green Wellbeing's network.</p></div>
+    <div class="card"><span class="who">Who takes part</span><h3>Farmers and growers</h3><p>2–4 farmers or growers from the partner sites, as co-designers and hosts, paid for their time.</p></div>
+  </div>
+  <ol class="steps">
+    <li><span class="when">Spring 2027</span><div><b>1 · Baseline</b><ul>
+      <li>Content audit of each farm's current channels: website, social media, newsletters. What do they say, how often, and to whom?</li>
+      <li>Short interview with each farmer: what they want people to learn, and how much time they realistically have.</li></ul></div></li>
+    <li><span class="when">May – June</span><div><b>2 · Co-design workshops (2 sessions)</b><ul>
+      <li>Young people and farmers together. Map the questions young people have about food and farming; choose the topics.</li>
+      <li>Plan a farm visit and storyboard 3–5 short videos and a simple online learning path.</li></ul></div></li>
+    <li><span class="when">June – August</span><div><b>3 · Test (3–4 farm and garden days)</b><ul>
+      <li>Each day: farm walk and the farm's story; a hands-on task (sowing, harvesting, composting, preserving); a short reflection circle.</li>
+      <li>Young people film and help edit the short videos; the learning path goes online for them to use after the visit.</li></ul></div></li>
+    <li><span class="when">Aug – Sep</span><div><b>4 · Evaluate</b><ul>
+      <li>Interviews: about 10–12 young people from both groups, and all participating farmers. Includes what stops young people from going into farming.</li>
+      <li>A short questionnaire before and after: what participants know about local, organic and regenerative food, and whether they intend to grow, visit farms or buy locally.</li>
+      <li>Observation notes from each day, and digital engagement (video views, how many complete the learning path).</li></ul></div></li>
+  </ol>
+  <div class="prose">
+    <p><b>Analysis:</b> thematic analysis of interviews and notes; simple descriptive statistics for the questionnaires. In design-based research the materials are revised after each round, and the result is a set of tested design principles plus the materials themselves.</p>
+    <p class="note">Ethics: University of Iceland ethics approval, informed consent, parental consent for anyone under 18, separate consent for filming, and anonymised quotes.</p>
+  </div>
+</section>
+
 <section id="outputs">
   <h2><span class="n">R5</span>What it produces</h2>
   <div class="cards">
     <div class="card"><span class="who">Output</span><h3>Tested curriculum and toolkit</h3><p>A formal version for schools and adult education, and a non-formal one for Erasmus+, community projects and libraries.</p></div>
     <div class="card"><span class="who">Output</span><h3>Digital learning path</h3><p>Short videos and an online path made with partner farms.</p></div>
-    <div class="card"><span class="who">Output</span><h3>The harbour, version 1</h3><p>Links and pathways into farming in Iceland, later Poland and Europe.</p></div>
+    <div class="card"><span class="who">Output</span><h3>The harbour, version 1</h3><p>Links and pathways into farming in Iceland, later the Nordic countries.</p></div>
     <div class="card"><span class="who">Output</span><h3>Policy note</h3><p>Barriers to entry (land, money, subsidies) for government and future research.</p></div>
   </div>
   
 </section>
+<section id="researcher">
+  <h2><span class="n">R7</span>About the researcher</h2>
+  <div class="prose">
+    <p><b>Marina Ermina</b> is a mixed-methods researcher and educator working where human wellbeing, sustainability and learning meet. She holds a first-class MA in Environment and Natural Resources from the University of Iceland (2025) and is completing a second MA in International Education, of which this study is the thesis.</p>
+    <p>Her earlier research asked how human wellbeing and ecological sustainability are measured and connected in the Nordic countries, comparing wellbeing indices (HDI, SPI, SDG Index) with the Ecological Footprint and mapping national wellbeing-economy frameworks. She has also worked as a data analyst on the National Footprint and Biocapacity Accounts.</p>
+    <p>As co-founder of Green Wellbeing she has run environmental and wellbeing workshops (including at Seljagarður community garden, SEEDS Iceland and GAIA Iceland), worked as a nature and wellbeing educator with children, and completed Erasmus+ training for youth trainers. She grows food herself and works alongside regenerative farming in Iceland.</p>
+  </div>
+  <ul class="ideas">
+    <li><span class="id">↗</span><div><div class="t"><a href="https://hdl.handle.net/1946/51535">MA thesis: Exploring Indicators of Human Wellbeing and Ecological Sustainability in the Nordic Countries (2025)</a></div><div class="d">Skemman, University of Iceland.</div></div><span class="chip c-decided">Research</span></li>
+    <li><span class="id">↗</span><div><div class="t"><a href="https://mermina.github.io/beyond-gdp-nordics/">Interactive dashboard: Wellbeing Economy, Beyond-GDP Indicators in the Nordics</a></div><div class="d">Wellbeing indices vs the Ecological Footprint, 2000–2022.</div></div><span class="chip c-decided">Research</span></li>
+  </ul>
+</section>
 <section id="sources">
   <h2><span class="n">R6</span>Policy context, with sources</h2>
   <ul class="ideas">
-    <li><span class="id">↗</span><div><div class="t"><a href="https://www.stjornarradid.is/library/01--Frettatengt---myndir-og-skrar/MAR/Fylgiskjol/MAR_EflingLifraennarMatvaelaframleidslu_Lokautgafa.pdf">Organic production action plan (Government of Iceland, draft 30 Nov 2023)</a></div><div class="d">Target: 10% of agricultural land certified organic by 2040 (p. 7). The current share is “not available” (p. 7). Its education measures focus on producers and agricultural students; young people and the wider public are not yet addressed. This project works in that gap.</div></div><span class="chip c-decided">Verified</span></li>
+    <li><span class="id">↗</span><div><div class="t"><a href="https://www.stjornarradid.is/library/01--Frettatengt---myndir-og-skrar/MAR/Fylgiskjol/MAR_EflingLifraennarMatvaelaframleidslu_Lokautgafa.pdf">Organic production action plan (Government of Iceland; draft Nov 2023, final Aug 2024)</a></div><div class="d">Target: 10% of agricultural land certified organic by 2040 (p. 7). The current share is “not available” (p. 7). Its education measures focus on producers and agricultural students; young people and the wider public are not yet addressed. This project works in that gap.</div></div><span class="chip c-decided">Verified</span></li>
     <li><span class="id">↗</span><div><div class="t"><a href="https://www.eea.europa.eu/en/europe-environment-2025/countries/iceland/area-under-organic-farming">European Environment Agency: Iceland, organic area</a></div><div class="d">Repeats the 10% by 2040 target; says Iceland's organic trend “has shown no growth”.</div></div><span class="chip c-decided">Verified</span></li>
     <li><span class="id">!</span><div><div class="t">Current organic share</div><div class="d">Official figures to be confirmed in the literature review.</div></div><span class="chip c-open">To confirm</span></li>
   </ul>
 </section>
 <p class="note">Contact: Green Wellbeing fta. · <a href="https://greenwellbeing.org">greenwellbeing.org</a></p>
-</div></div></main>
+</div><aside class="side" aria-label="Project links">
+  <div class="side-card">
+    <span class="lab">The project</span>
+    <b>Farm Education</b>
+    <p>Farm-based and digital learning about local, organic and regenerative food, for young people in Iceland. A Green Wellbeing project.</p>
+    <a class="side-cta" href="https://greenwellbeing.org">Visit Green Wellbeing →</a>
+  </div>
+  <div class="side-card">
+    <span class="lab">Jump to</span>
+    <nav class="side-nav"><a href="theory.html">Theory chapters (full) ↗</a><a href="#question">Research question</a><a href="#method">Method</a><a href="#fieldwork">Fieldwork in detail</a><a href="#outputs">Outputs</a><a href="#researcher">About the researcher</a></nav>
+  </div>
+  <div class="side-card">
+    <span class="lab">Earlier research</span>
+    <a href="https://hdl.handle.net/1946/51535">MA thesis on wellbeing and sustainability (2025) ↗</a>
+    <a href="https://mermina.github.io/beyond-gdp-nordics/">Beyond-GDP Nordics dashboard ↗</a>
+  </div>
+  <div class="side-card">
+    <span class="lab">Source</span>
+    <a href="https://github.com/mermina/farm-education-research">This page on GitHub ↗</a>
+  </div>
+</aside></div></main>
 <footer class="site"><div>Green Wellbeing fta. · Farm Education Research · draft research design, October 2026</div></footer>
+<script>(function(){function s(){var h=document.querySelector(".topbar");if(h)document.documentElement.style.setProperty("--hdr",h.offsetHeight+"px")}s();addEventListener("resize",s);addEventListener("load",s)})();</script>
+</body>
+</html>
