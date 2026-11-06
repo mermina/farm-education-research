@@ -1,8 +1,5 @@
-# Farm Education Research
+# Farm Education for Food Sustainability
 
-Master's research design (draft, October 2026): co-designing farm-based and digital learning about food sustainability with farmers and young people in Iceland. A Green Wellbeing project.
+Master's research design (draft, updated November 2026): the first stage of co-designing learning about food sustainability on farms and digitally, with farmers, the general public and young people in Iceland.
 
-- `index.html` — research design
-- `theory.html` — theory chapters with sources
-
-Live site: https://mermina.github.io/farm-education-research/
+Open `index.html` or the GitHub Pages site.
